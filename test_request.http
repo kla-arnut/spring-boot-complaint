@@ -1,0 +1,26 @@
+GET http://localhost:9090/complaint HTTP/1.1
+
+###
+
+POST http://localhost:9090/complaint HTTP/1.1
+
+###
+
+POST http://localhost:9090/complaint/create HTTP/1.1
+
+content-type: application/json
+{
+    "data_type": 99,
+    "region_code": "Wed, 21 Oct 2015 18:27:50 GMT",
+    "region_name": "vvvvvv"
+}
+
+###
+
+GET  http://localhost:9090/complaint/get HTTP/1.1
+
+###
+
+GET  http://localhost:9090/complaint/1 HTTP/1.1
+
+###

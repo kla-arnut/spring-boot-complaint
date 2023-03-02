@@ -1,0 +1,19 @@
+POST http://10.1.27.24:8090/ssw_arunsawad_api/api/login HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+username=0197
+&password=9884
+&fcm_token=1234
+&uid=TRWd
+&check=Y
+
+### 
+
+POST http://10.1.27.24:8090/ssw_arunsawad_api/api/login HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+username=35267
+&password=-hk8nvik=lusN
+&fcm_token=1234
+&uid=TRWd
+&check=Y

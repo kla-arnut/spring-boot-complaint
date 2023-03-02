@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    <springProfile name="default">
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <root level="WARN">
+            <appender-ref ref="FILE-ROLLING"/>
+        </root>
+        <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>logs/app.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>logs/archived/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <!-- each archived file, size max 10MB -->
+                <maxFileSize>10MB</maxFileSize>
+                <!-- total size of all archive files, if total size > 1GB, it will delete old archived file -->
+                <totalSizeCap>1GB</totalSizeCap>
+                <!-- 30 days to keep -->
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%d %highlight(%-5level) %c{1} [%t] %m %n</pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+    <springProfile name="dev">
+        <root level="DEBUG">
+            <appender-ref ref="FILE-ROLLING"/>
+        </root>
+        <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>logs/app.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>logs/archived/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <!-- each archived file, size max 5MB -->
+                <maxFileSize>5MB</maxFileSize>
+                <!-- total size of all archive files, if total size > 10MB, it will delete old archived file -->
+                <totalSizeCap>10MB</totalSizeCap>
+                <!-- 5 days to keep -->
+                <maxHistory>5</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%d %highlight(%-5level) %c{1} [%t] %m %n</pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+</configuration>

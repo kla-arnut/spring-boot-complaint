@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="~{fragments/fragments :: html_head}"></head>
+
+<body>
+    <div class="wrapper">
+        <nav th:replace="~{fragments/fragments :: html_sidebar}"></nav>
+        <div class="main">
+
+            <nav th:replace="~{fragments/fragments :: html_main-header}"></nav>
+            
+            <main class="content">
+                <div class="container-fluid p-0">
+                    <h1 class="h3 mb-3"><strong>Your</strong> Header</h1>
+                    <div class="row">
+                        <div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Empty card</h5>
+								</div>
+								<div class="card-body">
+								</div>
+							</div>
+						</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Empty card</h5>
+								</div>
+								<div class="card-body">
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </main>
+
+            <footer th:replace="~{fragments/fragments :: html_main-footer}"></footer>
+        </div>
+    </div>
+
+    <script th:replace="~{fragments/fragments :: html_base-js-script}"></script>
+
+    <script>
+        // your script hear
+    </script>
+    <script>
+        // your script hear
+    </script>
+    <script>
+        // your script hear
+    </script>
+    <script>
+        // your script hear
+    </script>
+
+</body>
+
+</html>

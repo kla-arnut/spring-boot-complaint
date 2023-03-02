@@ -28,7 +28,7 @@ public class ComplaintController {
 
     ComplaintService complaintService;
 
-    @RequestMapping(value = "", produces = "application/json")
+    @RequestMapping(value = {"","/"}, produces = "application/json")
     @ResponseBody
     public String getGreetingWhileReturnTypeIsString() {
         return "{\"success\": true}";

@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +23,6 @@ import java.util.Optional;
 public class ComplaintController {
 
     @Autowired
-
     ComplaintService complaintService;
 
     @RequestMapping(value = {"","/"}, produces = "application/json")
@@ -58,5 +55,11 @@ public class ComplaintController {
     public void delete(@PathVariable(value = "complaintId") Integer id) {
         complaintService.delete(id);
     }
+
+    @DeleteMapping(value = "/test")
+    public void test(@PathVariable(value = "complaintId") Integer id) {
+        complaintService.delete(id);
+    }
+
 
 }

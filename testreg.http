@@ -3,8 +3,8 @@ content-type: application/x-www-form-urlencoded
 
 username=0197
 &password=9884
-&fcm_token=1234
-&uid=TRWd
+# &fcm_token=1234
+# &uid=TRWd
 &check=Y
 
 ### 

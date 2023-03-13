@@ -13,18 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
     
-    @GetMapping(value = {"", "/", "index.html", "index", "home", "home.html", "dashboard", "dashboard.html"})
+    @GetMapping(value = { "/", "home", "home.html", "index", "index.html"})
     public String home(HttpServletRequest request) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if(session != null && session.getAttribute("token") != null) {
-            return "/dashboard";             
-        }
-        
-        return "redirect:/auth/login";
-    }
-
-    @GetMapping(value = "add-complaint") 
-    public String addComplaint(){
-        return "add-complaint";
+        return "/homepage"; 
     }
 }

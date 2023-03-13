@@ -17,3 +17,57 @@ username=35267
 &fcm_token=1234
 &uid=TRWd
 &check=Y
+
+
+
+Login
+curl --location 'http://43.249.111.21:8088/api/login' \
+--form 'username="35267"' \
+--form 'password="-hk8nvik=lusN"' \
+--form 'check="Y"'
+
+curl --location 'http://43.249.111.21:8088/api/login' \
+--form 'username="31622"' \
+--form 'password="3579"' \
+--form 'check="Y"'
+
+User Profile
+curl --location --request POST 'http://43.249.111.21:8088/api/user-profile' \
+--header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC80My4yNDkuMTExLjIxOjgwODhcL2FwaVwvbG9naW4iLCJpYXQiOjE2Nzg3MDQ2MDUsIm5iZiI6MTY3ODcwNDYwNSwianRpIjoiaXVSVkFPODZUVmE1N1FzTCIsInN1YiI6NDQyMDMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._4ZlLkMgL_aiSEZm_wlOvPcBMEyUna3hcv3dRhTuti8'
+
+{
+  "status": 200,
+  "message": "Login Success",
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC80My4yNDkuMTExLjIxOjgwODhcL2FwaVwvbG9naW4iLCJpYXQiOjE2Nzg3MDQ2MDUsIm5iZiI6MTY3ODcwNDYwNSwianRpIjoiaXVSVkFPODZUVmE1N1FzTCIsInN1YiI6NDQyMDMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._4ZlLkMgL_aiSEZm_wlOvPcBMEyUna3hcv3dRhTuti8",
+  "token_type": "bearer",
+  "user": {
+    "id": 44203,
+    "name_th": "อาณัติ กล่ำฮุ้ย",
+    "name_en": "arnut klamhui",
+    "email": "kla.arnut@gmail.com",
+    "email_verified_at": null,
+    "register_id": "8559",
+    "username": "35267",
+    "password2": null,
+    "employee_id": "35267",
+    "employee_type": "IN",
+    "session_id": null,
+    "access_token": "A0TNFQGdGu9z0MMW8kzSysS7W6GHdek4ig3IpZoy4Ldg0ppPf1NobkzPba3QoY4EvO6yn0S1uZS85quN6OyUToklQr1zkgSsKnuLeEUCitPPMEdyBqvdaUvDDIzjQGpX43TuGdkSEoJsCUOYeLIsol9NfdKYY2qlhQTgd00Qj8sxUG4wpWKcamZ2FJGBVkzN1ljAwJe1bVmxTfzvdXFz5r45eCuPPegeapVrXjcf41JPwlHk9C8P3dSSNeUfF67r",
+    "mobile_phone": "0839703921",
+    "position": "Senior Full Stack Developer",
+    "level": "HO",
+    "branch_code": "HO",
+    "start_date": "2023-02-16",
+    "status": "ACTIVE",
+    "deleted": "0",
+    "created_userid": "32758",
+    "created_at": "2023-02-20T09:15:19.617000Z",
+    "updated_userid": "666",
+    "updated_at": "2023-03-13T10:49:19.233000Z",
+    "password_change": "Y",
+    "fcm_token": "cwSb9fdgRq2MhgGDql3RTR:APA91bEsww8nVWyA2O2doMk7Bwr03wOghPl6u1zNB20bgwKavhRo6vJJkiZBEvWOMz4CABQPCYJGr9xycrVUITvkLb5F2OYuJ3XTkOR1JPsqgKImFh7n3zlgEC_asIPjf4JCtZht5RBU",
+    "uid": "6f82f701815fb20a",
+    "jwt_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC80My4yNDkuMTExLjIxOjgwODhcL2FwaVwvbG9naW4iLCJpYXQiOjE2Nzg3MDQ1NTksIm5iZiI6MTY3ODcwNDU1OSwianRpIjoiZm9BOWxNWUdLZFZSd0RtMCIsInN1YiI6NDQyMDMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.t18k1zmb3yrQOjX14lKH4b5CWYvJEGboWg4_inyRLhs",
+    "insurance_plan": null
+  }
+}

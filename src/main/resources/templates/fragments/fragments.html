@@ -8,8 +8,7 @@
     <meta name="description" content="^^ &amp; system for ssw complaint" />
     <meta name="author" content="arnut@srisawadpower.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" th:href="@{img/icons/icon-48x48.png}" />
-    <link rel="canonical" href="https://demo-basic.adminkit.io/" />
+    <link rel="shortcut icon" th:href="@{/img/icons/icon-48x48.png}" />
     <title>SSW | Complaint System</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link th:href="@{/css/app.css}" rel="stylesheet">
@@ -19,7 +18,7 @@
 <body>
     <nav th:fragment="html_sidebar" id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
-            <a class="sidebar-brand" href="index.html">
+            <a class="sidebar-brand" th:href="@{~/admin/dashboard}">
                 <span class="align-middle">
                     <p>Hello!,Sir</p>
                 </span>
@@ -32,19 +31,19 @@
                 </li>
 
                 <li class="sidebar-item active">
-                    <a th:href="@{~/dashboard}" class="sidebar-link">
+                    <a th:href="@{~/admin/dashboard}" class="sidebar-link">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">หน้าแรก</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a th:href="@{~/add-complaint}" class="sidebar-link">
+                    <a th:href="@{~/admin/addnewcomplaint}" class="sidebar-link">
                         <i class="align-middle" data-feather="plus-square"></i> <span class="align-middle">เพิ่มเรื่องร้องเรียน</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a th:href="@{~/table-complaint}" class="sidebar-link">
+                    <a th:href="@{~/admin/complatinttable}" class="sidebar-link">
                         <i class="align-middle" data-feather="database"></i> <span class="align-middle">เรื่องร้องเรียนทั้งหมด</span>
                     </a>
                 </li>
@@ -241,7 +240,7 @@
                             <a href="#" class="list-group-item">
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle"
+                                        <img th:src="@{/img/avatars/avatar-5.jpg}" class="avatar img-fluid rounded-circle"
                                             alt="Vanessa Tucker">
                                     </div>
                                     <div class="col-10 ps-2">
@@ -255,7 +254,7 @@
                             <a href="#" class="list-group-item">
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle"
+                                        <img th:src="@{/img/avatars/avatar-2.jpg}" class="avatar img-fluid rounded-circle"
                                             alt="William Harris">
                                     </div>
                                     <div class="col-10 ps-2">
@@ -269,7 +268,7 @@
                             <a href="#" class="list-group-item">
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle"
+                                        <img th:src="@{/img/avatars/avatar-4.jpg}" class="avatar img-fluid rounded-circle"
                                             alt="Christina Mason">
                                     </div>
                                     <div class="col-10 ps-2">
@@ -283,7 +282,7 @@
                             <a href="#" class="list-group-item">
                                 <div class="row g-0 align-items-center">
                                     <div class="col-2">
-                                        <img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle"
+                                        <img th:src="@{/img/avatars/avatar-3.jpg}" class="avatar img-fluid rounded-circle"
                                             alt="Sharon Lessman">
                                     </div>
                                     <div class="col-10 ps-2">
@@ -306,7 +305,7 @@
                     </a>
 
                     <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                        <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
+                        <img th:src="@{/img/avatars/avatar.jpg}" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
                         <span class="text-dark">Charles Hall</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">

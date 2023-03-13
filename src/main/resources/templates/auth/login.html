@@ -34,8 +34,8 @@ form:before {
     border-radius: 10px;
 }
 
-.w500 {
-    font-weight: 500;
+.w450 {
+    font-weight: 450;
 }
 
 </style>
@@ -46,9 +46,9 @@ form:before {
             <div class="container">
                 <div class="row text-white">
                     <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-                        <h1 class="display-4 py-2 text-truncate w500">Login</h1>
+                        <h1 class="display-4 py-2 text-truncate w450">Login</h1>
                         <div class="px-2">
-                            <form th:action="@{/auth/login}" method="post" class="justify-content-center needs-validation">
+                            <form th:action="@{/auth/login}" method="POST" class="justify-content-center needs-validation">
                                 <div class="form-group">
                                     <label class="sr-only">Username</label>
                                     <input name="username" type="text" class="form-control" placeholder="Your username" required>
@@ -62,7 +62,13 @@ form:before {
                             </form>
                         </div>
                     </div>
-                    <div th:text="${loginError}" class="alert alert-danger" role="alert"></div>
+                    
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger" role="alert">Invalid username or password.</div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-danger" role="alert">You have been logged out.</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,9 +77,8 @@ form:before {
     <script th:replace="~{fragments/fragments :: html_base-js-script}"></script>
 
     <script>
-       
+       // your script hear
     </script>
-        // your script hear
     <script>
         // your script hear
     </script>

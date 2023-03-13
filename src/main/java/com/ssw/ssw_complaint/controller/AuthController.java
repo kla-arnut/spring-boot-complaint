@@ -28,89 +28,85 @@ import com.ssw.ssw_complaint.service.User;
 @Controller
 public class AuthController {
     
-    @GetMapping(value = {"/auth/login"})
+    @GetMapping("/auth/login")
     public String home(HttpServletRequest request) throws ServletException, IOException {
-        HttpSession session = request.getSession(false); //we instantiate the interface HttpSession first and check if session is not already tokenized.
-        if(session != null && session.getAttribute("token") != null) { //if token already assigned to session
-            return "redirect:/dashboard"; //go to dashboard
-        }
-        return "/auth/login"; //else go to login
+        return "/auth/login";
     }
 
-    @PostMapping(value = {"/auth/login"})
-    public String checkLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam String username, @RequestParam String password, Model model) {
+    // @PostMapping(value = {"/auth/login"})
+    // public String checkLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam String username, @RequestParam String password, Model model) {
 
-        // request url
-        String reqUrl = "http://10.1.27.24:8090/ssw_arunsawad_api/api/login";
+    //     // request url
+    //     String reqUrl = "http://10.1.27.24:8090/ssw_arunsawad_api/api/login";
         
-        // create an instance of RestTemplate
-        RestTemplate restTemplate = new RestTemplate();
+    //     // create an instance of RestTemplate
+    //     RestTemplate restTemplate = new RestTemplate();
 
-        //setting up the request headers
-        HttpHeaders requestHeaders = new HttpHeaders();
-        requestHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+    //     //setting up the request headers
+    //     HttpHeaders requestHeaders = new HttpHeaders();
+    //     requestHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
-        // request body parameters
-        Map<String, String> paramMap = new HashMap<>();
-        paramMap.put("username", username);
-        paramMap.put("password", password);
-        paramMap.put("check", "Y");
-        paramMap.put("fcm_token", "");
-        paramMap.put("uid", "");
+    //     // request body parameters
+    //     Map<String, String> paramMap = new HashMap<>();
+    //     paramMap.put("username", username);
+    //     paramMap.put("password", password);
+    //     paramMap.put("check", "Y");
+    //     paramMap.put("fcm_token", "");
+    //     paramMap.put("uid", "");
 
-        //request entity is created with request body and headers
-        HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(paramMap, requestHeaders);
+    //     //request entity is created with request body and headers
+    //     HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(paramMap, requestHeaders);
 
-        // send POST request to login
-        ResponseEntity<User> responseEntity = restTemplate.exchange(
-                reqUrl,
-                HttpMethod.POST,
-                requestEntity,
-                User.class
-        );
+    //     // send POST request to login
+    //     ResponseEntity<User> responseEntity = restTemplate.exchange(
+    //             reqUrl,
+    //             HttpMethod.POST,
+    //             requestEntity,
+    //             User.class
+    //     );
 
-        // if login success 200 OK
-        if(responseEntity.getStatusCode() == HttpStatus.OK){
-            System.out.println(HttpStatus.OK);
-            User userObj = responseEntity.getBody();
-            System.out.println(userObj.getMessage());
-            System.out.println(userObj.getStatus());
-            System.out.println(userObj.getAccess_token());
-            System.out.println(userObj.getToken_type());
-            System.out.println(userObj.getUser().getId());
-            System.out.println(userObj.getUser().getName_th());
+    //     // if login success 200 OK
+    //     if(responseEntity.getStatusCode() == HttpStatus.OK){
+    //         System.out.println(HttpStatus.OK);
+    //         User userObj = responseEntity.getBody();
+    //         System.out.println(userObj.getMessage());
+    //         System.out.println(userObj.getStatus());
+    //         System.out.println(userObj.getAccess_token());
+    //         System.out.println(userObj.getToken_type());
+    //         System.out.println(userObj.getUser().getId());
+    //         System.out.println(userObj.getUser().getName_th());
 
-            HttpSession session = request.getSession();
-            session.setAttribute("token", "mySession");
-            Cookie cookie = new Cookie("sessionId", session.getId());
-            /*cookie.setMaxAge(30 * 60); //---> Set cookie expiry time to 30 minutes */
-            cookie.setSecure(true);
-            cookie.setHttpOnly(true);
-            cookie.setPath("/");
-            response.addCookie(cookie);
+    //         HttpSession session = request.getSession();
+    //         session.setAttribute("token", "mySession");
+    //         Cookie cookie = new Cookie("sessionId", session.getId());
+    //         /*cookie.setMaxAge(30 * 60); //---> Set cookie expiry time to 30 minutes */
+    //         cookie.setSecure(true);
+    //         cookie.setHttpOnly(true);
+    //         cookie.setPath("/");
+    //         response.addCookie(cookie);
 
-            return "redirect:/dashboard";
-        }
+    //         return "redirect:/dashboard";
+    //     }
 
        
 
 
-        model.addAttribute("loginError", "Credential not match");
-        return "/auth/login";
-    }
+    //     model.addAttribute("loginError", "Credential not match");
+    //     return "/auth/login";
+    // }
     
-    @GetMapping(value = "/auth/logout")
-    public String logout(HttpSession session,HttpServletResponse response) {
-        session.invalidate(); // close session
+    // @GetMapping(value = "/auth/logout")
+    // public String logout(HttpSession session,HttpServletResponse response) {
+    //     session.invalidate(); // close session
 
-        Cookie cookie = new Cookie("token", "mySession");
-        cookie.setMaxAge(0); // set expire now
-        cookie.setSecure(true);
-        cookie.setHttpOnly(true);
-        cookie.setPath("/");
-        response.addCookie(cookie);
+    //     Cookie cookie = new Cookie("token", "mySession");
+    //     cookie.setMaxAge(0); // set expire now
+    //     cookie.setSecure(true);
+    //     cookie.setHttpOnly(true);
+    //     cookie.setPath("/");
+    //     response.addCookie(cookie);
 
-        return "redirect:/auth/login"; //redirect to login 
-    }    
+    //     return "redirect:/auth/login"; //redirect to login 
+    // }    
 
 }

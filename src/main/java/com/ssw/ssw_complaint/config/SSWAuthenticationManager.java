@@ -51,14 +51,6 @@ public class SSWAuthenticationManager implements AuthenticationManager {
         if (user != null) {
             UsernamePasswordAuthenticationToken authenticationToken;
             authenticationToken = new UsernamePasswordAuthenticationToken(user, null, getAuthorities());
-            
-            // // set session
-            // request.getSession().setAttribute("UserAuthenObj", user);
-
-            // // get session
-            // User userDetail = (User) request.getAttribute("UserAuthenObj");
-            // System.out.println(userDetail);
-
             return authenticationToken;
         }
 
@@ -69,7 +61,7 @@ public class SSWAuthenticationManager implements AuthenticationManager {
 
     private User loginToSSWAPI(String username, String password) {
 
-        System.out.println(loginurl);
+        log.debug(loginurl);
         // create an instance of RestTemplate
         RestTemplate restTemplate = new RestTemplate(getClientHttpRequestFactory());
         // setting up the request headers
@@ -82,6 +74,7 @@ public class SSWAuthenticationManager implements AuthenticationManager {
         paramMap.put("check", "Y");
         paramMap.put("fcm_token", "");
         paramMap.put("uid", "");
+        paramMap.put("appname","ssw_complaint");
         // request entity is created with request body and headers
         HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(paramMap, requestHeaders);
         // send POST request to login
@@ -99,7 +92,6 @@ public class SSWAuthenticationManager implements AuthenticationManager {
             return null;
         }
 
-        // TODO handle if response status is not 200OK
         // if login success 200 OK
         User userObj = null;
         if(responseEntity.getStatusCode() == HttpStatus.OK && responseEntity.getBody() != null){

@@ -3,20 +3,12 @@ package com.ssw.ssw_complaint.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.logout.HeaderWriterLogoutHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter;
-import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter.Directive;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 
 
 @Configuration
@@ -26,7 +18,7 @@ public class SecurityConfiguration {
     @Autowired
     private SSWAuthenticationManager authenticationManager;
 
-    public static final String[] ENDPOINTS_WHITELIST = {"/css/**","/js/**","/img/**","/","/home","/index","/auth/login","/admin/**"};
+    public static final String[] ENDPOINTS_WHITELIST = {"/css/**","/js/**","/img/**","/","/home","/index","/auth/login"};
     public static final String LOGIN_URL = "/auth/login";
     public static final String LOGOUT_URL = "/auth/logout";
     public static final String LOGIN_FAIL_URL = LOGIN_URL + "?error";

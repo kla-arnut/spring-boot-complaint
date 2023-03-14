@@ -15,7 +15,7 @@ public class ComplaintModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    private Integer data_type; // insert data by?, such as excel-import, api-post, website-add // has a table relation data_type_description
+    private String data_type; // insert data by?, such as excel-import, api-post, website-add
     private String region_code;
     private String region_name;
     private String area_code;
@@ -30,9 +30,10 @@ public class ComplaintModel {
     private String email; 
     // @Column(nullable = false)
     private String complaint_description;
-    private Integer data_source; // what is department are add ?, such as call-center, branch, customer-himself // has a table relation data_source_description
-    private String accused; // who or branch was accused? พนักงาน หรือ สาขา ที่โดนร้องเรียน
-    private Integer state; // current state id // has a table relation state_source_description
+    private String data_source; // what is department are add ?, such as call-center, branch, customer-himself 
+    private String complain_branch; // who or branch was accused? สาขา ที่โดนร้องเรียน
+    private String complain_emp; // who or branch was accused? พนักงาน ที่โดนร้องเรียน
+    private String state; // current state 
     private Integer deleted;
     private java.sql.Date reaction_at; // time at reaction
     private java.sql.Date created_at;
@@ -88,27 +89,35 @@ public class ComplaintModel {
         this.reaction_at = reaction_at;
     }
 
-    public Integer get_state() {
+    public String get_state() {
         return state;
     }
 
-    public void set_state(Integer state) {
+    public void set_state(String state) {
         this.state = state;
     }
 
-    public String get_accused() {
-        return accused;
+    public String get_complain_branch() {
+        return complain_branch;
     }
 
-    public void set_accused(String accused) {
-        this.accused = accused;
+    public void set_complain_branch(String complain_branch) {
+        this.complain_branch = complain_branch;
     }
 
-    public Integer get_data_source() {
+    public String get_complain_emp() {
+        return complain_emp;
+    }
+
+    public void set_complain_emp(String complain_emp) {
+        this.complain_emp = complain_emp;
+    }
+
+    public String get_data_source() {
         return data_source;
     }
 
-    public void set_data_source(Integer data_source) {
+    public void set_data_source(String data_source) {
         this.data_source = data_source;
     }
 
@@ -208,11 +217,11 @@ public class ComplaintModel {
         this.region_code = region_code;
     }
 
-    public Integer get_data_type() {
+    public String get_data_type() {
         return data_type;
     }
 
-    public void set_data_type(Integer data_type) {
+    public void set_data_type(String data_type) {
         this.data_type = data_type;
     }
 

@@ -1,8 +1,5 @@
 package com.ssw.ssw_complaint.config;
 
-import java.io.IOException;
-import java.net.http.HttpConnectTimeoutException;
-import java.net.http.HttpTimeoutException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -24,9 +21,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import com.ssw.ssw_complaint.service.User;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -39,7 +33,6 @@ public class SSWAuthenticationManager implements AuthenticationManager {
     private String username = "";
     private String password = "";
     @Value("${app.api.loginurl}") private String loginurl;
-    @Autowired private HttpServletRequest request;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -50,7 +43,8 @@ public class SSWAuthenticationManager implements AuthenticationManager {
         User user = loginToSSWAPI(username, password) ;
         if (user != null) {
             UsernamePasswordAuthenticationToken authenticationToken;
-            authenticationToken = new UsernamePasswordAuthenticationToken(user, null, getAuthorities());
+            authenticationToken = new UsernamePasswordAuthenticationToken(user, null, getAuthorities());  
+      
             return authenticationToken;
         }
 
@@ -61,7 +55,7 @@ public class SSWAuthenticationManager implements AuthenticationManager {
 
     private User loginToSSWAPI(String username, String password) {
 
-        log.debug(loginurl);
+        log.debug("login url "+loginurl);
         // create an instance of RestTemplate
         RestTemplate restTemplate = new RestTemplate(getClientHttpRequestFactory());
         // setting up the request headers
@@ -74,7 +68,6 @@ public class SSWAuthenticationManager implements AuthenticationManager {
         paramMap.put("check", "Y");
         paramMap.put("fcm_token", "");
         paramMap.put("uid", "");
-        paramMap.put("appname","ssw_complaint");
         // request entity is created with request body and headers
         HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(paramMap, requestHeaders);
         // send POST request to login
@@ -92,6 +85,7 @@ public class SSWAuthenticationManager implements AuthenticationManager {
             return null;
         }
 
+        // TODO handle if response status is not 200OK
         // if login success 200 OK
         User userObj = null;
         if(responseEntity.getStatusCode() == HttpStatus.OK && responseEntity.getBody() != null){

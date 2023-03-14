@@ -9,20 +9,57 @@
         <div class="main">
 
             <nav th:replace="~{fragments/fragments :: html_main-header}"></nav>
-            
+
             <main class="content">
                 <div class="container-fluid p-0">
                     <h1 class="h3 mb-3"><strong>เพิ่มเรื่องร้องเรียนใหม่</strong></h1>
                     <div class="row">
-                        <div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Empty card</h5>
-								</div>
-								<div class="card-body">
-								</div>
-							</div>
-						</div>
+                        <div class="col-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">ชื่อ-นามสกุล ลูกค้า</span>
+                                        <input type="text" aria-label="First name" class="form-control">
+                                        <input type="text" aria-label="Last name" class="form-control">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">เบอร์โทรศัพท์</span>
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">อีเมลล์</span>
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">รายละเอียดเรื่องที่ร้องเรียน</span>
+                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" for="inputGroupSelect01">สาขาที่ถูกร้องเรียน</label>
+                                        <select class="form-select" id="inputGroupSelect01">
+                                          <option selected>Choose...</option>
+                                          <option value="1">One</option>
+                                          <option value="2">Two</option>
+                                          <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">ชื่อพนักงานที่ถูกร้องเรียน</span>
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">เลขที่สัญญา</span>
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+
+                            
+
+                            
+                        </div>
                     </div>
                 </div>
             </main>

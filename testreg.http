@@ -71,3 +71,6 @@ curl --location --request POST 'http://43.249.111.21:8088/api/user-profile' \
     "insurance_plan": null
   }
 }
+
+http://10.1.27.24:8090/ssw_arunsawad_api/
+curl --location 'http://43.249.111.21:8088/api/branch/get-all-branch' --form 'branchCode="C6"'
